@@ -14,9 +14,8 @@ import android.net.Uri;
 
 public class DataProvider extends ContentProvider {
 	
-	public static final Uri CONTENT_URI_MESSAGES = Uri.parse("content://com.example.researchapp.provider/messages");
-	public static final Uri CONTENT_URI_PROFILE = Uri.parse("content://com.example.reaseachapp.provider/profile");
-
+	public static final Uri CONTENT_URI_MESSAGES = Uri.parse("content://com.nusa.chris.provider/messages");
+	public static final Uri CONTENT_URI_PROFILE = Uri.parse("content://com.nusa.chris.provider/profile");
 	public static final String COL_ID = "_id";
 	
 	public static final String TABLE_MESSAGES = "messages";
@@ -42,10 +41,10 @@ public class DataProvider extends ContentProvider {
 	private static final UriMatcher uriMatcher;
 	static {
 		uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-		uriMatcher.addURI("com.example.researchapp", "messages", MESSAGES_ALLROWS);
-		uriMatcher.addURI("com.example.researchapp.provider", "messages/#", MESSAGES_SINGLE_ROW);
-		uriMatcher.addURI("com.example.researchapp.provider", "profile", PROFILE_ALLROWS);
-		uriMatcher.addURI("com.example.researchapp.provider", "profile/#", PROFILE_SINGLE_ROW);
+		uriMatcher.addURI("com.nusa.chris.provider", "messages", MESSAGES_ALLROWS);
+		uriMatcher.addURI("com.nusa.chris.provider", "messages/#", MESSAGES_SINGLE_ROW);
+		uriMatcher.addURI("com.nusa.chris.provider", "profile", PROFILE_ALLROWS);
+		uriMatcher.addURI("com.nusa.chris.provider", "profile/#", PROFILE_SINGLE_ROW);
 	}
 
 	@Override
@@ -182,7 +181,8 @@ public class DataProvider extends ContentProvider {
 	//--------------------------------------------------------------------------
 	
 	private static class DbHelper extends SQLiteOpenHelper {
-		
+	
+	
 		private static final String DATABASE_NAME = "researchapp.db";
 		private static final int DATABASE_VERSION = 1;
 
@@ -193,7 +193,9 @@ public class DataProvider extends ContentProvider {
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL("create table messages (_id integer primary key autoincrement, msg text, email text, email2 text, at datetime default current_timestamp);");
-			db.execSQL("create table profile (_id integer primary key autoincrement, name text, email text unique, count integer default 0);");
+			db.execSQL("create table profile (_id integer primary key autoincrement, name text, email text unique, count integer default 0, location text, group text);");
+			//email is supposed to be unique
+
 		}
 
 		@Override

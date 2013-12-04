@@ -2,8 +2,10 @@ package com.example.androidtut;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
+
 import android.app.ListActivity;
 import android.app.LoaderManager;
+import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -23,11 +25,17 @@ public class ChatPageOne extends ListActivity implements LoaderManager.LoaderCal
 	
 	private SimpleCursorAdapter adapter;
 	private AlertDialog disclaimer;
-	
+	 String demo="demidemo";
+	String emaildemo="emaildemo";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		//adding demo contacts
+        /*ContentValues values = new ContentValues(2);
+       
+        values.put(DataProvider.COL_NAME, demo);
+        values.put(DataProvider.COL_EMAIL, emaildemo );
+       getContentResolver().insert(DataProvider.CONTENT_URI_PROFILE, values);*/
 		adapter = new SimpleCursorAdapter(this, 
 				R.layout.activity_chat_page_one, 
 				null, 

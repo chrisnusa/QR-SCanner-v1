@@ -42,7 +42,9 @@ public class ChatActivity extends Activity implements MessagesFragment.OnFragmen
 		profileId = getIntent().getStringExtra(Common.PROFILE_ID);
 		msgEdit = (EditText) findViewById(R.id.msg_edit);
 		sendBtn = (Button) findViewById(R.id.send_btn);
-		
+
+       
+
 		ActionBar actionBar = getActionBar();
 	//	actionBar.setHomeButtonEnabled(true);
 		actionBar.setDisplayHomeAsUpEnabled(true);
